@@ -26,7 +26,7 @@ const DEFAULT_CONFIG = {
       component: UserPage,
     },
   ],
-  "core.MainMenu": [AdminMainMenu],
+  "core.MainMenu": [{ name: 'AdminMainMenu', component: AdminMainMenu }],
   refs: [
     { key: "admin.UserPicker", ref: UserPicker },
     { key: "admin.EnrolmentOfficerPicker", ref: EnrolmentOfficerPicker },
