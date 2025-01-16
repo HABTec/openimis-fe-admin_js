@@ -64,6 +64,7 @@ class AdminMainMenu extends Component {
           header={formatMessage(this.props.intl, "admin", "mainMenu")}
           icon={<LocationCity />}
           entries={entries}
+          menuId="AdminMainMenu"
         />
       );
     }
@@ -149,6 +150,7 @@ class AdminMainMenu extends Component {
         header={formatMessage(this.props.intl, "admin", "mainMenu")}
         icon={<LocationCity />}
         entries={entries}
+        menuId="AdminMainMenu"
       />
     );
   }
