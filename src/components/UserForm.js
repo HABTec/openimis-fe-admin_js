@@ -32,7 +32,7 @@ import {
   fetchUsernameLength,
 } from "../actions";
 import UserMasterPanel from "./UserMasterPanel";
-
+import zxcvbn from 'zxcvbn'
 const styles = (theme) => ({
   lockedPage: theme.page.locked,
 });
@@ -146,10 +146,20 @@ class UserForm extends Component {
 
     this.setState(setupState(this.props));
   };
-
+  checkPasswordStrength (password){
+    if(typeof password == 'string' && password != ''){
+      const evaluation = zxcvbn(password)
+      if(evaluation.score < 3){
+        return false
+      }
+      else{
+        return true
+      }
+    }
+    return false;
+  }
   canSave = () => {
     const { user } = this.state;
-
     if (!user) return false;
     if (
       !(
@@ -162,7 +172,9 @@ class UserForm extends Component {
         !this.props.isUserEmailFormatInvalid &&
         user.roles?.length &&
         user.districts?.length > 0 &&
-        user.language
+        user.language &&
+        this.checkPasswordStrength(user.password) &&
+        this.checkPasswordStrength(user.confirmPassword)
       )
     )
       return false;
