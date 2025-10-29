@@ -6,7 +6,7 @@ import { withTheme, withStyles } from "@material-ui/core/styles";
 import { Grid, Divider, Typography, Button, InputAdornment, IconButton, Box } from "@material-ui/core";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
-
+import zxcvbn from "zxcvbn"
 import {
   withModulesManager,
   useTranslations,
@@ -85,6 +85,16 @@ const UserMasterPanel = (props) => {
 
     return isEmailInvalid;
   };
+
+  const checkPasswordStrength = (password) => {
+    if(typeof password == 'string' && password != ''){
+      const evaluation = zxcvbn(password)
+      if(evaluation.score < 3){
+        return "Password is too weak. Avoid common patterns and dictionary words."
+      }
+    }
+    return null;
+  }
 
   const handleEmailChange = (email) => {
     const isFormatValid = checkEmailFormatValidity(email);
@@ -296,6 +306,7 @@ const UserMasterPanel = (props) => {
           readOnly={readOnly}
           value={edited.password}
           onChange={(password) => onEditedChanged({ ...edited, password })}
+          error = {checkPasswordStrength(edited.password)}
           endAdornment={
             <InputAdornment position="end">
               <IconButton
@@ -318,6 +329,7 @@ const UserMasterPanel = (props) => {
           required={edited.password}
           readOnly={readOnly}
           value={edited.confirmPassword}
+          error = {checkPasswordStrength(edited.confirmPassword)}
           onChange={(confirmPassword) => onEditedChanged({ ...edited, confirmPassword })}
           endAdornment={
             <InputAdornment position="end">
