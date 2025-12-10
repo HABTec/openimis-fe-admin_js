@@ -75,7 +75,7 @@ class UserSearcher extends Component {
   };
 
   setRegionIds = (paramsArray) => {
-    const regionIds = this.props.userL0s?.map((region) => decodeId(region.id));
+    const regionIds = this.props.userL0s?.map((region) => decodeId(region?.id));
     paramsArray.push(`regionIds: [${regionIds}]`);
   };
 
