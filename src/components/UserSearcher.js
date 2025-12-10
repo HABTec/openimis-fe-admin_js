@@ -83,6 +83,7 @@ class UserSearcher extends Component {
     if (prevState.userL0s !== this.props.userL0s) {
       if (this.props.userL0s && this.props.fetchedUserLocation) {
         const prms = [...this.state.params];
+        console.log(prms, "setting your location")
         this.setRegionIds(prms);
         this.props.fetchUsersSummaries(this.props.modulesManager, prms);
       }
@@ -108,6 +109,7 @@ class UserSearcher extends Component {
       prms.push(`orderBy: ["${state.orderBy}"]`);
     }
     if (this.props.fetchedUserLocation) {
+      console.log(prms, "setting your location")
       this.setRegionIds(prms);
     }
     return prms;
