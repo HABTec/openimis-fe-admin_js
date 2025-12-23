@@ -234,27 +234,6 @@ const UserMasterPanel = (props) => {
       )}
       <Grid item xs={4} className={classes.item}>
         <PublishedComponent
-          pubRef="location.HealthFacilityPicker"
-          value={edited?.healthFacility}
-          district={edited.districts}
-          module="admin"
-          readOnly={readOnly}
-          required={edited.userTypes.includes(CLAIM_ADMIN_USER_TYPE)}
-          onChange={(healthFacility) => onEditedChanged({ ...edited, healthFacility })}
-        />
-      </Grid>
-      <Grid item xs={6} className={classes.item}>
-        <PublishedComponent
-          pubRef="admin.UserRolesPicker"
-          required
-          value={edited?.roles ?? []}
-          module="admin"
-          readOnly={readOnly}
-          onChange={(roles) => onEditedChanged({ ...edited, roles })}
-        />
-      </Grid>
-      <Grid item xs={2} className={classes.item}>
-        <PublishedComponent
           pubRef="location.LocationPicker"
           locationLevel={0}
           value={edited.region}
@@ -278,6 +257,28 @@ const UserMasterPanel = (props) => {
           withLabel
           label={formatMessage("user.districts")}
           restrictedOptions
+        />
+      </Grid>
+      
+      <Grid item xs={4} className={classes.item}>
+        <PublishedComponent
+          pubRef="admin.UserRolesPicker"
+          required
+          value={edited?.roles ?? []}
+          module="admin"
+          readOnly={readOnly}
+          onChange={(roles) => onEditedChanged({ ...edited, roles })}
+        />
+      </Grid>
+      <Grid item xs={4} className={classes.item}>
+        <PublishedComponent
+          pubRef="location.HealthFacilityPicker"
+          value={edited?.healthFacility}
+          district={edited.districts}
+          module="admin"
+          readOnly={readOnly}
+          required={edited.userTypes.includes(CLAIM_ADMIN_USER_TYPE)}
+          onChange={(healthFacility) => onEditedChanged({ ...edited, healthFacility })}
         />
       </Grid>
 
