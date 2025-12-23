@@ -46,7 +46,7 @@ const getParentLocation = (locations) => {
   }
   let newLocation = {
     key: "regionId",
-    id: decodeId(region?.id),
+    id: decodeId(region.id),
     value: region,
   };
   if (district) {
