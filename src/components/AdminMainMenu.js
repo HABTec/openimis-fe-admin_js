@@ -72,6 +72,7 @@ class AdminMainMenu extends Component {
         text: formatMessage(this.props.intl, "admin", "menu.products"),
         icon: <Tune />,
         route: "/admin/products",
+        id: "admin.products"
       });
     }
     if (rights.includes(RIGHT_HEALTHFACILITIES)) {
@@ -79,6 +80,7 @@ class AdminMainMenu extends Component {
         text: formatMessage(this.props.intl, "admin", "menu.healthFacilities"),
         icon: <LocalHospital />,
         route: "/location/healthFacilities",
+        id: "admin.healthfacilities",
         withDivider: true,
       });
     }
@@ -87,6 +89,7 @@ class AdminMainMenu extends Component {
         text: formatMessage(this.props.intl, "admin", "menu.medicalServicesPrices"),
         icon: <HealingOutlined />,
         route: "/medical/pricelists/services",
+        id: "admin.medicalServicesPrices"
       });
     }
     if (rights.includes(RIGHT_PRICELISTMI)) {
@@ -94,6 +97,7 @@ class AdminMainMenu extends Component {
         text: formatMessage(this.props.intl, "admin", "menu.medicalItemsPrices"),
         icon: <LocalPharmacyOutlined />,
         route: "/medical/pricelists/items",
+        id: "admin.medicalItemsPrices",
         withDivider: true,
       });
     }
@@ -102,6 +106,7 @@ class AdminMainMenu extends Component {
         text: formatMessage(this.props.intl, "admin", "menu.medicalServices"),
         icon: <Healing />,
         route: "/medical/medicalServices",
+        id: "admin.medicalServices"
       });
     }
     if (rights.includes(RIGHT_MEDICALITEMS)) {
@@ -109,6 +114,7 @@ class AdminMainMenu extends Component {
         text: formatMessage(this.props.intl, "admin", "menu.medicalItems"),
         icon: <LocalPharmacy />,
         route: "/medical/medicalItems",
+        id: "admin.medicalItems",
         withDivider: true,
       });
     }
@@ -117,6 +123,7 @@ class AdminMainMenu extends Component {
         text: formatMessage(this.props.intl, "admin", "menu.users"),
         icon: <Person />,
         route: "/admin/users",
+        id: "admin.users"
       });
     }
     if (rights.includes(RIGHT_LOCATIONS)) {
@@ -124,6 +131,7 @@ class AdminMainMenu extends Component {
         text: formatMessage(this.props.intl, "admin", "menu.locations"),
         icon: <PinDrop />,
         route: "/location/locations",
+        id: "admin.locations"
       });
     }
 
@@ -132,7 +140,6 @@ class AdminMainMenu extends Component {
         .getContribs(ADMIN_MAIN_MENU_CONTRIBUTION_KEY)
         .filter((c) => !c.filter || c.filter(rights)),
     );
-
     if (!entries.length) return null;
     return (
       <MainMenuContribution
