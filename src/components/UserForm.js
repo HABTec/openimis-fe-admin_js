@@ -167,6 +167,7 @@ class UserForm extends Component {
         user.otherNames &&
         user.username &&
         user.email &&
+        user.phoneNumber &&
         this.props.isUserNameValid === true &&
         this.props.isUserEmailValid === true &&
         !this.props.isUserEmailFormatInvalid &&
