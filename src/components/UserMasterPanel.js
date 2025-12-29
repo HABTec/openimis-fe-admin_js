@@ -223,8 +223,7 @@ const UserMasterPanel = (props) => {
             type="phone"
             label="user.phone"
             required={
-              obligatoryUserFields?.phone == "M" ||
-              (edited.userTypes?.includes(ENROLMENT_OFFICER_USER_TYPE) && obligatoryEOFields?.phone == "M")
+              true
             }
             readOnly={readOnly}
             value={edited?.phoneNumber ?? ""}
