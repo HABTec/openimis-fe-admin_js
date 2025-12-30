@@ -53,7 +53,31 @@ const EnrolmentOfficerFormPanel = (props) => {
   useEffect(() => {
     toggleUserRoles(edited, data, isValid, isEnabled, hasOfficerRole, onEditedChanged, OFFICER_ROLE_IS_SYSTEM);
   }, [isEnabled]);
+  const  dateToDateTime = (inputDate) => {
+    let date;
 
+    if (typeof inputDate === 'string') {
+      // Assume input is YYYY-MM-DD format
+      date = new Date(inputDate + 'T00:00:00');
+    } else if (inputDate instanceof Date) {
+      date = new Date(inputDate);
+      // Reset time to midnight
+      date.setHours(0, 0, 0, 0);
+    } else {
+      throw new Error('Invalid input: provide a date string (YYYY-MM-DD) or Date object');
+    }
+
+    // Validate the date
+    if (isNaN(date.getTime())) {
+      throw new Error('Invalid Date');
+    }
+
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}T00:00:00`;
+  }
   useEffect(() => {
     toggleSwitchButton(
       edited,
@@ -113,7 +137,7 @@ const EnrolmentOfficerFormPanel = (props) => {
                 module="admin"
                 label="user.worksTo"
                 readOnly={readOnly}
-                onChange={(worksTo) => onEditedChanged({ ...edited, worksTo })}
+                onChange={(worksTo) => onEditedChanged({ ...edited, worksTo: dateToDateTime(worksTo) })}
               />
             </Grid>
             <Grid item xs={12} className={classes.item}>
