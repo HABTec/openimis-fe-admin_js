@@ -19,8 +19,10 @@ import {
   RIGHT_HEALTHFACILITIES,
   RIGHT_PRICELISTMS,
   RIGHT_PRICELISTMI,
+  RIGHT_PRICELISTMLS,
   RIGHT_MEDICALSERVICES,
   RIGHT_MEDICALITEMS,
+  RIGHT_MEDICALLABSERVICES,
   // RIGHT_ENROLMENTOFFICER,
   // RIGHT_CLAIMADMINISTRATOR,
   RIGHT_USERS,
@@ -101,6 +103,14 @@ class AdminMainMenu extends Component {
         withDivider: true,
       });
     }
+    if (rights.includes(RIGHT_PRICELISTMLS)) {
+      entries.push({
+        text: formatMessage(this.props.intl, "admin", "menu.medicalLabServicesPrices"),
+        icon: <HealingOutlined />,
+        route: "/medical/pricelists/labServices",
+        id: "admin.medicalLabServicesPrices",
+      });
+    }
     if (rights.includes(RIGHT_MEDICALSERVICES)) {
       entries.push({
         text: formatMessage(this.props.intl, "admin", "menu.medicalServices"),
@@ -115,6 +125,15 @@ class AdminMainMenu extends Component {
         icon: <LocalPharmacy />,
         route: "/medical/medicalItems",
         id: "admin.medicalItems",
+        withDivider: true,
+      });
+    }
+    if (rights.includes(RIGHT_MEDICALLABSERVICES)) {
+      entries.push({
+        text: formatMessage(this.props.intl, "admin", "menu.medicalLabServices"),
+        icon: <Healing />,
+        route: "/medical/medicalLabServices",
+        id: "admin.medicalLabServices",
         withDivider: true,
       });
     }

@@ -8,6 +8,8 @@
   "admin.menu.locations": "Locations",
   "admin.menu.medicalItems": "Medical Items",
   "admin.menu.medicalItemsPrices": "Medical Items Price Lists",
+  "admin.menu.medicalLabServices": "Laboratory Services",
+  "admin.menu.medicalLabServicesPrices": "Laboratory Services Price Lists",
   "admin.menu.medicalServices": "Medical Services",
   "admin.menu.medicalServicesPrices": "Medical Services Price Lists",
   "admin.menu.payers": "Payers",
